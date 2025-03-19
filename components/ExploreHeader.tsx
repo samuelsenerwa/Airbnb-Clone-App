@@ -82,7 +82,7 @@ const ExploreHeader = ({ onCategoryChanged }: Props) => {
                     showsHorizontalScrollIndicator={false}
                     contentContainerStyle={{
                         alignItems: 'center',
-                        gap: 20,
+                        gap: 30,
                         paddingHorizontal: 16,
                     }}>
                     {categories.map((item, index) => (

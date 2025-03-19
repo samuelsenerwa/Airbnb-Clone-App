@@ -1,5 +1,5 @@
 import { View, Text } from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, Stack } from 'expo-router'
 import ExploreHeader from '@/components/ExploreHeader'
 import Listings from '@/components/Listings'
@@ -12,6 +12,10 @@ const Page = () => {
         setCategory(category);
     };
 
+    useEffect(() => {
+        // reload the listings
+    }, [category])
+
     return (
         <View style={{ flex: 1, marginTop: 80 }}>
             <Stack.Screen
@@ -19,7 +23,7 @@ const Page = () => {
                     header: () => <ExploreHeader onCategoryChanged={onDataChanged} />
                 }}
             />
-            <Listings />
+            <Listings listings={[]} category={category} />
         </View>
     )
 }
