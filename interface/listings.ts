@@ -1,4 +1,4 @@
-export interface Listings {
+export interface PropertyListings {
     id:                             string;
     listing_url:                    string;
     scrape_id:                      string;

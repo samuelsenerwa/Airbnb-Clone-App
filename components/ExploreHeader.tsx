@@ -57,53 +57,51 @@ const ExploreHeader = ({ onCategoryChanged }: Props) => {
     };
 
     return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
-            <View style={styles.container}>
-                <View style={styles.actionRow}>
-                    <Link href={'/(modals)/booking'} asChild>
-                        <TouchableOpacity>
-                            <View style={styles.searchBtn}>
-                                <Ionicons name="search" size={24} />
-                                <View>
-                                    <Text style={{ fontFamily: 'mon-sb' }}>Where to?</Text>
-                                    <Text style={{ color: Colors.grey, fontFamily: 'mon' }}>Anywhere · Any week</Text>
-                                </View>
+        <View style={styles.container}>
+            <View style={styles.actionRow}>
+                <Link href={'/(modals)/booking'} asChild>
+                    <TouchableOpacity>
+                        <View style={styles.searchBtn}>
+                            <Ionicons name="search" size={24} />
+                            <View>
+                                <Text style={{ fontFamily: 'mon-sb' }}>Where to?</Text>
+                                <Text style={{ color: Colors.grey, fontFamily: 'mon' }}>Anywhere · Any week</Text>
                             </View>
-                        </TouchableOpacity>
-                    </Link>
-                    <TouchableOpacity style={styles.filterBtn}>
-                        <Ionicons name="options-outline" size={24} />
+                        </View>
                     </TouchableOpacity>
-                </View>
-
-                <ScrollView
-                    horizontal
-                    ref={scrollRef}
-                    showsHorizontalScrollIndicator={false}
-                    contentContainerStyle={{
-                        alignItems: 'center',
-                        gap: 30,
-                        paddingHorizontal: 16,
-                    }}>
-                    {categories.map((item, index) => (
-                        <TouchableOpacity
-                            ref={(el) => (itemsRef.current[index] = el)}
-                            key={index}
-                            style={activeIndex === index ? styles.categoriesBtnActive : styles.categoriesBtn}
-                            onPress={() => selectCategory(index)}>
-                            <MaterialIcons
-                                name={item.icon as any}
-                                size={24}
-                                color={activeIndex === index ? '#000' : Colors.grey}
-                            />
-                            <Text style={activeIndex === index ? styles.categoryTextActive : styles.categoryText}>
-                                {item.name}
-                            </Text>
-                        </TouchableOpacity>
-                    ))}
-                </ScrollView>
+                </Link>
+                <TouchableOpacity style={styles.filterBtn}>
+                    <Ionicons name="options-outline" size={24} />
+                </TouchableOpacity>
             </View>
-        </SafeAreaView>
+
+            <ScrollView
+                horizontal
+                ref={scrollRef}
+                showsHorizontalScrollIndicator={false}
+                contentContainerStyle={{
+                    alignItems: 'center',
+                    gap: 30,
+                    paddingHorizontal: 16,
+                }}>
+                {categories.map((item, index) => (
+                    <TouchableOpacity
+                        ref={(el) => (itemsRef.current[index] = el)}
+                        key={index}
+                        style={activeIndex === index ? styles.categoriesBtnActive : styles.categoriesBtn}
+                        onPress={() => selectCategory(index)}>
+                        <MaterialIcons
+                            name={item.icon as any}
+                            size={24}
+                            color={activeIndex === index ? '#000' : Colors.grey}
+                        />
+                        <Text style={activeIndex === index ? styles.categoryTextActive : styles.categoryText}>
+                            {item.name}
+                        </Text>
+                    </TouchableOpacity>
+                ))}
+            </ScrollView>
+        </View>
     );
 };
 
