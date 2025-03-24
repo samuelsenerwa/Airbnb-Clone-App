@@ -33,6 +33,8 @@ const DetailsPage = () => {
         }
     };
 
+    // custom header
+
     useLayoutEffect(() => {
         navigation.setOptions({
             headerTitle: '',
@@ -58,6 +60,8 @@ const DetailsPage = () => {
             ),
         });
     }, []);
+
+    // get offset of the scrollview
 
     const scrollOffset = useScrollViewOffset(scrollRef);
 
