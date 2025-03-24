@@ -46,7 +46,7 @@ export default function RootLayout() {
     'lex-bold': require('../assets/fonts/Lexend-Bold.ttf'),
     'lex-light': require('../assets/fonts/Lexend-Light.ttf'),
     'lex-medium': require('../assets/fonts/Lexend-Medium.ttf'),
-    'lex-semi': require('../assets/fonts/Lexend-SemiBold.ttf'),
+    'lex-': require('../assets/fonts/Lexend-SemiBold.ttf'),
   });
 
   // Expo Router uses Error Boundaries to catch errors in the navigation tree.

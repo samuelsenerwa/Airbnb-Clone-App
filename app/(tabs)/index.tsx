@@ -6,6 +6,8 @@ import Listings from '@/components/Listings'
 import listingData from "@/assets/data/airbnb-listings.json"
 import { PropertyListings } from '@/interface/listings'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import ListingsMap from '@/components/ListingsMap'
+import ListingGeoData from '@/assets/data/airbnb-listings.geo.json'
 
 const Page = () => {
 
@@ -23,7 +25,8 @@ const Page = () => {
                     header: () => <ExploreHeader onCategoryChanged={onDataChanged} />,
                 }}
             />
-            <Listings listings={items} category={category} />
+            {/* <Listings listings={items} category={category} /> */}
+            <ListingsMap listings={ListingGeoData} />
         </SafeAreaView>
     )
 }
