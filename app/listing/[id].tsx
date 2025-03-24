@@ -82,6 +82,8 @@ const DetailsPage = () => {
         };
     });
 
+    // animate header using custom styles
+
     const headerAnimatedStyle = useAnimatedStyle(() => {
         return {
             opacity: interpolate(scrollOffset.value, [0, IMG_HEIGHT / 1.5], [0, 1]),
