@@ -8,6 +8,7 @@ import { PropertyListings } from '@/interface/listings'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import ListingsMap from '@/components/ListingsMap'
 import ListingGeoData from '@/assets/data/airbnb-listings.geo.json'
+import ListingsBottomSheet from '@/components/ListingsBottomSheet'
 
 const Page = () => {
 
@@ -20,6 +21,7 @@ const Page = () => {
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
+            {/* <View style={{fle: 1, marginTop: 80>}} */}
             <Stack.Screen
                 options={{
                     header: () => <ExploreHeader onCategoryChanged={onDataChanged} />,
@@ -27,6 +29,7 @@ const Page = () => {
             />
             {/* <Listings listings={items} category={category} /> */}
             <ListingsMap listings={ListingGeoData} />
+            <ListingsBottomSheet listings={items} category={category} />
         </SafeAreaView>
     )
 }
