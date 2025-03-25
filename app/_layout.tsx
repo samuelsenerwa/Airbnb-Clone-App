@@ -1,12 +1,14 @@
 import { Ionicons } from '@expo/vector-icons';
 import { useFonts } from 'expo-font';
-import { router, Stack, useRouter } from 'expo-router';
+import { Stack, useRouter } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import { TouchableOpacity } from 'react-native';
 import * as SecureStore from 'expo-secure-store';
 import 'react-native-reanimated';
 import { ClerkProvider, useAuth } from '@clerk/clerk-expo';
+import ModalHeaderText from '@/components/ModalHeaderText';
+import Colors from '@/constants/Colors';
 
 const CLERK_PUBLISHABLE_KEY = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
 
@@ -46,7 +48,7 @@ export default function RootLayout() {
     'lex-bold': require('../assets/fonts/Lexend-Bold.ttf'),
     'lex-light': require('../assets/fonts/Lexend-Light.ttf'),
     'lex-medium': require('../assets/fonts/Lexend-Medium.ttf'),
-    'lex-': require('../assets/fonts/Lexend-SemiBold.ttf'),
+    'lex-semi': require('../assets/fonts/Lexend-SemiBold.ttf'),
   });
 
   // Expo Router uses Error Boundaries to catch errors in the navigation tree.
@@ -109,9 +111,19 @@ function RootLayoutNav() {
         options={{
           presentation: 'transparentModal',
           animation: 'fade',
+          headerTransparent: true,
+          headerTitle: () => <ModalHeaderText />,
           headerLeft: () => (
-            <TouchableOpacity onPress={() => router.back()} >
-              <Ionicons name='close-outline' size={28} />
+            <TouchableOpacity
+              style={{
+                backgroundClip: '#fff',
+                borderColor: Colors.grey,
+                borderRadius: 20,
+                borderWidth: 1,
+                padding: 4,
+              }}
+              onPress={() => router.back()} >
+              <Ionicons name='close-outline' size={22} />
             </TouchableOpacity>
           )
         }}
