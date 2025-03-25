@@ -5,7 +5,7 @@ import { Link } from 'expo-router';
 import { PropertyListings } from '@/interface/listings';
 import { Ionicons } from '@expo/vector-icons';
 import Animated, { FadeInRight, FadeOutLeft } from 'react-native-reanimated';
-import { BottomSheetFlatListMethods } from '@gorhom/bottom-sheet';
+import { BottomSheetFlatList, BottomSheetFlatListMethods } from '@gorhom/bottom-sheet';
 
 
 interface Props {
@@ -59,7 +59,7 @@ const Listings = ({ listings: items, category, refresh }: Props) => {
 
     return (
         <View style={defaultStyles.container}>
-            <FlatList
+            <BottomSheetFlatList
                 renderItem={renderRow}
                 ref={listRef}
                 data={loading ? [] : items}
