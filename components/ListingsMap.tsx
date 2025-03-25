@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet } from 'react-native'
-import React, { useEffect, useRef } from 'react'
+import React, { memo, useEffect, useRef } from 'react'
 import MapView from 'react-native-map-clustering'
 import { Marker } from 'react-native-maps'
 import { PROVIDER_GOOGLE } from 'react-native-maps'
@@ -18,7 +18,7 @@ const INITIAL_REGION = {
     longitudeDelta: 9,
 };
 
-const ListingsMap = ({ listings }: ListingsMapProps) => {
+const ListingsMap = memo(({ listings }: ListingsMapProps) => {
 
     const router = useRouter();
 
@@ -87,7 +87,7 @@ const ListingsMap = ({ listings }: ListingsMapProps) => {
             </MapView>
         </View>
     )
-}
+});
 
 const styles = StyleSheet.create({
     container: {
