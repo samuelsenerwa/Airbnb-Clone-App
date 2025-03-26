@@ -5,6 +5,7 @@ import BottomSheet from '@gorhom/bottom-sheet';
 import Listings from './Listings';
 import Colors from '@/constants/Colors';
 import { Ionicons } from '@expo/vector-icons';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 interface Props {
     listings: PropertyListings[];
@@ -23,27 +24,29 @@ const ListingsBottomSheet = ({ listings, category }: Props) => {
     };
 
     return (
-        <BottomSheet
-            ref={bottomSheetRef}
-            snapPoints={snapPoints}
-            handleIndicatorStyle={{ backgroundColor: Colors.grey }}
-            enablePanDownToClose={false}
-            index={1}
-            style={styles.sheetContainer}
-        >
-            <View style={{ flex: 1 }}>
-                <Listings listings={listings} category={category} refresh={refresh} />
-                <View style={styles.absoluteBtn}>
-                    <TouchableOpacity
-                        onPress={showMap}
-                        style={styles.btn}
-                    >
-                        <Text style={{ fontFamily: 'lex-semi', color: '#fff' }}>Map</Text>
-                        <Ionicons name="map" size={20} color={'#fff'} />
-                    </TouchableOpacity>
+        <GestureHandlerRootView style={{ flex: 1 }}>
+            <BottomSheet
+                ref={bottomSheetRef}
+                snapPoints={snapPoints}
+                handleIndicatorStyle={{ backgroundColor: Colors.grey }}
+                enablePanDownToClose={false}
+                index={1}
+                style={styles.sheetContainer}
+            >
+                <View style={{ flex: 1 }}>
+                    <Listings listings={listings} category={category} refresh={refresh} />
+                    <View style={styles.absoluteBtn}>
+                        <TouchableOpacity
+                            onPress={showMap}
+                            style={styles.btn}
+                        >
+                            <Text style={{ fontFamily: 'lex-semi', color: '#fff' }}>Map</Text>
+                            <Ionicons name="map" size={20} color={'#fff'} />
+                        </TouchableOpacity>
+                    </View>
                 </View>
-            </View>
-        </BottomSheet>
+            </BottomSheet>
+        </GestureHandlerRootView>
     )
 }
 
