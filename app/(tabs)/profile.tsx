@@ -1,11 +1,10 @@
-import { View, Text, Button, Image, StyleSheet, SafeAreaView, TouchableOpacity } from 'react-native'
+import { View, Text, Button, Image, StyleSheet, SafeAreaView, TouchableOpacity, TextInput } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { SignedIn, useAuth, useUser } from '@clerk/clerk-expo'
 import { Link } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { defaultStyles } from '@/constants/Styles';
 import Colors from '@/constants/Colors';
-import { TextInput } from 'react-native-gesture-handler';
 import * as ImagePicker from 'expo-image-picker';
 
 const Page = () => {
@@ -95,7 +94,7 @@ const Page = () => {
                             ) : (
                                 <View style={styles.editRow}>
                                     <Text
-                                        style={{ fontFamily: 'lexi-smi', fontSize: 22 }}>
+                                        style={{ fontFamily: 'lex-semi', fontSize: 22 }}>
                                         {firstName} {lastName}
                                     </Text>
                                     <TouchableOpacity onPress={() => setEdit(true)}>
