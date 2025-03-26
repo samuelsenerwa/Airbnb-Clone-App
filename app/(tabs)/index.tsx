@@ -1,37 +1,50 @@
-import { View, Text } from 'react-native'
-import React, { useEffect, useMemo, useState } from 'react'
-import { Link, Stack } from 'expo-router'
-import ExploreHeader from '@/components/ExploreHeader'
-import Listings from '@/components/Listings'
-import listingData from "@/assets/data/airbnb-listings.json"
-import { PropertyListings } from '@/interface/listings'
-import { SafeAreaView } from 'react-native-safe-area-context'
-import ListingsMap from '@/components/ListingsMap'
-import ListingGeoData from '@/assets/data/airbnb-listings.geo.json'
-import ListingsBottomSheet from '@/components/ListingsBottomSheet'
+import { View, StyleSheet } from 'react-native';
+import React, { useMemo, useState } from 'react';
+import { Stack } from 'expo-router';
+import ExploreHeader from '@/components/ExploreHeader';
+import ListingsMap from '@/components/ListingsMap';
+import ListingsBottomSheet from '@/components/ListingsBottomSheet';
+import listingData from '@/assets/data/airbnb-listings.json';
+import ListingGeoData from '@/assets/data/airbnb-listings.geo.json';
+import { PropertyListings } from '@/interface/listings';
 
 const Page = () => {
-
     const [category, setCategory] = useState<string>('Tiny homes');
-    const items = useMemo(() => listingData as PropertyListings[], [])
+    const items = useMemo(() => listingData as PropertyListings[], []);
 
     const onDataChanged = (category: string) => {
         setCategory(category);
     };
 
     return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
-            {/* <View style={{fle: 1, marginTop: 80>}} */}
+        <View style={styles.container}>
             <Stack.Screen
                 options={{
                     header: () => <ExploreHeader onCategoryChanged={onDataChanged} />,
                 }}
             />
-            {/* <Listings listings={items} category={category} /> */}
+            {/* Map fills the entire screen */}
             <ListingsMap listings={ListingGeoData} />
-            <ListingsBottomSheet listings={items} category={category} />
-        </SafeAreaView>
-    )
-}
+            {/* Bottom sheet overlays the map */}
+            <View style={styles.bottomSheetContainer}>
+                <ListingsBottomSheet listings={items} category={category} />
+            </View>
+        </View>
+    );
+};
 
-export default Page
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+    },
+    bottomSheetContainer: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+    },
+});
+
+export default Page;
